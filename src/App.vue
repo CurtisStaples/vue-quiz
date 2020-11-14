@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <Header
-      :numCorrect="numCorrect"
-      :numTotal="numTotal"
-    />
-
     <b-container class="bv-example-row">
       <b-row>
         <b-col sm="6" offset="3">
@@ -21,13 +16,11 @@
 </template>
 
 <script>
-import Header from './components/Header.vue'
 import QuestionBox from './components/QuestionBox.vue'
 
 export default {
   name: 'app',
   components: {
-    Header,
     QuestionBox
   },
   data() {
