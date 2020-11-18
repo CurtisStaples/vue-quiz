@@ -1,58 +1,19 @@
 <template>
   <div id="app">
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col sm="6" offset="3">
-          <QuestionBox
-            v-if="questions.length"
-            :currentQuestion="questions[index]"
-            :next="next"
-            :increment="increment"
-          />
-        </b-col>
-      </b-row>
-    </b-container>
+    <Header />
+    <div style="height:100%;">
+        <router-view class="margin-nav" style="height:inherit;"></router-view>
+      </div>
   </div>
 </template>
 
 <script>
-import QuestionBox from './components/QuestionBox.vue'
-
+import Header from './components/Header.vue';
 export default {
   name: 'app',
   components: {
-    QuestionBox
+    Header
   },
-  data() {
-    return {
-      questions: [],
-      index: 0,
-      numCorrect: 0,
-      numTotal: 0
-    }
-  },
-  methods: {
-    next() {
-      this.index++
-    },
-    increment(isCorrect) {
-      if (isCorrect) {
-        this.numCorrect++
-      }
-      this.numTotal++
-    }
-  },
-  mounted: function() {
-    fetch('https://opentdb.com/api.php?amount=10&category=27&type=multiple', {
-      method: 'get'
-    })
-      .then((response) => {
-        return response.json()
-      })
-      .then((jsonData) => {
-        this.questions = jsonData.results
-      })
-  }
 }
 </script>
 
@@ -63,6 +24,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px !important;
 }
 </style>
